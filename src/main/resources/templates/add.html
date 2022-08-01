@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot 简单留言板</title>
+    <link rel="stylesheet" type="text/css" th:href="@{bootstrap/dist/css/bootstrap.css}">
+    <script th:src="@{js/jquery-1.9.1.js}"></script>
+    <script th:src="@{bootstrap/dist/js/bootstrap.js}"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">留言板</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">首页</a></li>
+                <li><a href="#">留言</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <form method="post" th:action="@{/add}" th:object="${article}">
+                <div class="form-group">
+                    作者：<input type="text" class="form-control" placeholder="请输入昵称" th:field="*{name}" name="name">
+                </div>
+                <div class="form-group">
+                    标题：<input type="text" class="form-control" placeholder="请输入标题" name="title" th:field="*{title}">
+                </div>
+                <div class="form-group">
+                    内容：<textarea type="text" class="form-control" name="content" th:field="*{content}"></textarea>
+                </div>
+                <button type="submit" class="btn btn-default">提交</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
